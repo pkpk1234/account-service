@@ -3,6 +3,7 @@ package com.example.accountservice.model.address;
 import com.example.accountservice.model.BaseEntity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 /**
  * Created by pkpk1234 on 2017/5/18.
@@ -102,5 +103,23 @@ public class Address extends BaseEntity {
 
     public void setAddressType(AddressType addressType) {
         this.addressType = addressType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return Objects.equals(street1, address.street1) &&
+                Objects.equals(street2, address.street2) &&
+                Objects.equals(state, address.state) &&
+                Objects.equals(country, address.country) &&
+                Objects.equals(zipCode, address.zipCode) &&
+                addressType == address.addressType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(street1, street2, state, country, zipCode, addressType);
     }
 }

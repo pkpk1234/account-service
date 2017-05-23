@@ -6,6 +6,7 @@ import com.example.accountservice.model.creditcard.CreditCard;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -70,8 +71,16 @@ public class Account extends BaseEntity {
         this.creditCards.add(creditCard);
     }
 
-    public void addAdress(Address address) {
+    public void removeCreditCard(CreditCard creditCard) {
+        this.creditCards.remove(creditCard);
+    }
+
+    public void addAddress(Address address) {
         this.addresses.add(address);
+    }
+
+    public void removeAddress(Address address) {
+        this.addresses.remove(address);
     }
 
     @Override
@@ -82,5 +91,20 @@ public class Account extends BaseEntity {
                 ", creditCards=" + creditCards +
                 ", addresses=" + addresses +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Account account = (Account) o;
+        return Objects.equals(accountNumber, account.accountNumber) &&
+                Objects.equals(creditCards, account.creditCards) &&
+                Objects.equals(addresses, account.addresses);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(accountNumber, creditCards, addresses);
     }
 }

@@ -3,6 +3,7 @@ package com.example.accountservice.model.creditcard;
 import com.example.accountservice.model.BaseEntity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 /**
  * Created by pkpk1234 on 2017/5/18.
@@ -58,5 +59,19 @@ public class CreditCard extends BaseEntity {
 
     public void setCreditCardType(CreditCardType creditCardType) {
         this.creditCardType = creditCardType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CreditCard that = (CreditCard) o;
+        return Objects.equals(number, that.number) &&
+                creditCardType == that.creditCardType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number, creditCardType);
     }
 }
