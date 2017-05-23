@@ -66,6 +66,14 @@ public class Account extends BaseEntity {
         this.addresses = addresses;
     }
 
+    public void addCreditCard(CreditCard creditCard) {
+        this.creditCards.add(creditCard);
+    }
+
+    public void addAdress(Address address) {
+        this.addresses.add(address);
+    }
+
     @Override
     public String toString() {
         return "Account{" +

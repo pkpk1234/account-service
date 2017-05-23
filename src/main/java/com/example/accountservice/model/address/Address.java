@@ -21,18 +21,18 @@ public class Address extends BaseEntity {
     private Integer zipCode;
 
     @Enumerated(EnumType.STRING)
-    private AdressType adressType;
+    private AddressType addressType;
 
     public Address() {
     }
 
-    public Address(String street1, String street2, String state, String country, Integer zipCode, AdressType adressType) {
+    public Address(String street1, String street2, String state, String country, Integer zipCode, AddressType addressType) {
         this.street1 = street1;
         this.street2 = street2;
         this.state = state;
         this.country = country;
         this.zipCode = zipCode;
-        this.adressType = adressType;
+        this.addressType = addressType;
     }
 
     @Override
@@ -44,7 +44,7 @@ public class Address extends BaseEntity {
                 ", state='" + state + '\'' +
                 ", country='" + country + '\'' +
                 ", zipCode=" + zipCode +
-                ", adressType=" + adressType +
+                ", addressType=" + addressType +
                 '}';
     }
 
@@ -96,11 +96,11 @@ public class Address extends BaseEntity {
         this.zipCode = zipCode;
     }
 
-    public AdressType getAdressType() {
-        return adressType;
+    public AddressType getAddressType() {
+        return addressType;
     }
 
-    public void setAdressType(AdressType adressType) {
-        this.adressType = adressType;
+    public void setAddressType(AddressType addressType) {
+        this.addressType = addressType;
     }
 }
